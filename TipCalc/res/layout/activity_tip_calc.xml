@@ -1,0 +1,145 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".TipCalcActivity" >
+
+    <TextView
+        android:id="@+id/tvBillAmountLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/bill_amount_label"
+        android:textSize="@dimen/activity_text_size" />
+
+    <TextView
+        android:id="@+id/tvTipPercentageLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etBillAmount"
+        android:layout_below="@+id/etBillAmount"
+        android:text="@string/tip_percentage_label"
+        android:textSize="@dimen/activity_text_size" />
+
+    <TextView
+        android:id="@+id/tvTipAmountLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btnReset"
+        android:text="@string/tip_amount_label"
+        android:textSize="@dimen/activity_text_size" />
+
+    <TextView
+        android:id="@+id/tvTotalAmountLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvTipAmountLabel"
+        android:layout_below="@+id/tvTipAmount"
+        android:text="@string/total_amount_label"
+        android:textSize="@dimen/activity_text_size" />
+
+    <TextView
+        android:id="@+id/tvTotalAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvTotalAmountLabel"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tvTotalAmountLabel"
+        android:layout_toRightOf="@+id/tvTotalAmountLabel"
+        android:text="@string/total_amount"
+        android:textSize="@dimen/activity_text_size" />
+
+    <TextView
+        android:id="@+id/tvTipAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvTipAmountLabel"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tvTipAmountLabel"
+        android:layout_toRightOf="@+id/tvBillAmountLabel"
+        android:text="@string/tip_amount"
+        android:textSize="@dimen/activity_text_size" />
+
+    <Button
+        android:id="@+id/btnCalculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvTipAmountLabel"
+        android:layout_below="@+id/rgTipPercentage"
+        android:text="@string/button_calculate_label" />
+
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rgTipPercentage"
+        android:layout_toRightOf="@+id/btnCalculate"
+        android:text="@string/button_reset_label" />
+
+    <EditText
+        android:id="@+id/etBillAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvBillAmountLabel"
+        android:layout_below="@+id/tvBillAmountLabel"
+        android:ems="10"
+        android:height="@dimen/activity_edit_text_height"
+        android:hint="@string/bill_amount_hint"
+        android:inputType="numberDecimal" />
+
+    <RadioGroup
+        android:id="@+id/rgTipPercentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvTipPercentageLabel"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rbTip10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tip_ten_percentage_label"
+            android:textSize="@dimen/activity_text_size_small" />
+
+        <RadioButton
+            android:id="@+id/rbTip15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tip_fifteen_percentage_label"
+            android:textSize="@dimen/activity_text_size_small" />
+
+        <RadioButton
+            android:id="@+id/rbTip20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tip_twenty_percentage_label"
+            android:textSize="@dimen/activity_text_size_small" />
+
+        <RadioButton
+            android:id="@+id/rbOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tip_other_label"
+            android:textSize="@dimen/activity_text_size_small" />
+
+        <EditText
+            android:id="@+id/etTipOther"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:text="@string/tip_other" >
+
+            <requestFocus />
+        </EditText>
+
+    </RadioGroup>
+
+</RelativeLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TipCalc</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="bill_amount_label">Bill Amount:</string>
+    <string name="bill_amount_hint">Enter Bill Amount.</string>
+    <string name="tip_percentage_label">Tip Percentage:</string>
+    <string name="tip_ten_percentage_label">10%</string>
+    <string name="tip_fifteen_percentage_label">15%</string>
+    <string name="tip_twenty_percentage_label">20%</string>
+    <string name="button_calculate_label">Calculate</string>
+    <string name="button_reset_label">Reset</string>
+    <string name="tip_amount_label">Tip Amount:</string>
+    <string name="total_amount_label">Total Amount:</string>
+    <string name="tip_amount"></string>
+    <string name="total_amount"></string>
+    <string name="tip_other_label">Other:</string>
+    <string name="tip_other"></string>
+
+</resources>
