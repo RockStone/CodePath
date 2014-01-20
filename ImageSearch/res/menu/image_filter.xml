@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/miDone"
+        android:icon="@drawable/ic_done"
+        android:onClick="onDone"
+        android:showAsAction="ifRoom"
+        android:title="@string/done"/>
+
+</menu>
