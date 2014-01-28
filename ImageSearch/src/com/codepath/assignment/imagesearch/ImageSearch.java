@@ -60,7 +60,7 @@ public class ImageSearch extends Activity {
 		gvImageResults.setOnScrollListener(new EndlessScrollListener() {
 			@Override
 			public void onLoadMore(int page, int totalItemsCount) {
-				loadMore(page);
+				loadMore(totalItemsCount);
 			}
 		});
 	}
