@@ -9,7 +9,7 @@ import com.activeandroid.annotation.Table;
 @Table(name = "User")
 public class User {
 	@Column(name = "Name")
-	public String name;
+	public String userName;
 	
 	@Column(name = "ScreenName")
 	public String screenName;
@@ -24,7 +24,7 @@ public class User {
 	private String description;
 
 	public String getName() {
-		return name;
+		return userName;
 	}
 
 	public long getId() {
@@ -66,7 +66,7 @@ public class User {
 	public static User fromJson(JSONObject json) {
 		User u = new User();
 		try {
-			u.name = json.getString("name");
+			u.userName = json.getString("name");
 			u.userId = json.getLong("id");
         	u.userIdStr = json.getString("id_str");
 			u.screenName = json.getString("screen_name");

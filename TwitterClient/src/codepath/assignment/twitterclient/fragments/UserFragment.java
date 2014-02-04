@@ -13,14 +13,6 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 public class UserFragment extends TweetFragment {
 	private String userId;
 
-	public static UserFragment newInstance(String userId) {
-		UserFragment userTimeline = new UserFragment();
-		Bundle args = new Bundle();
-		args.putString("userId", userId);
-		userTimeline.setArguments(args);
-		return userTimeline;
-	}
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -31,7 +23,7 @@ public class UserFragment extends TweetFragment {
 					@Override
 					public void onSuccess(JSONArray jsonTweets) {
 						ArrayList<Tweet> tweets = Tweet.fromJson(jsonTweets);
-						getTweetsAdapter().addAll(tweets);
+						getTweetAdapter().addAll(tweets);
 					}
 				});
 	}

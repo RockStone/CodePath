@@ -42,6 +42,10 @@
             android:name="codepath.assignment.twitterclient.activities.ComposeActivity"
             android:label="@string/title_activity_compose" >
         </activity>
+        <activity
+            android:name="codepath.assignment.twitterclient.activities.ProfileActivity"
+            android:label="@string/title_activity_profile" >
+        </activity>
     </application>
 
 </manifest>

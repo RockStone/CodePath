@@ -19,18 +19,15 @@ import codepath.assignment.twitterclient.adapters.TweetAdapter;
 import codepath.assignment.twitterclient.clients.TwitterClientApp;
 import codepath.assignment.twitterclient.fragments.MentionsFragment;
 import codepath.assignment.twitterclient.fragments.TimelineFragment;
-import codepath.assignment.twitterclient.fragments.TweetFragment;
 import codepath.assignment.twitterclient.models.Tweet;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 
-public class TimelineActivity extends FragmentActivity implements TabListener,
-		TweetFragment.OnItemSelectedListener {
+public class TimelineActivity extends FragmentActivity implements TabListener {
 
-	private final int REQUEST_CODE_COMPOSE = 21;
-	private final int REQUEST_CODE_PROFILE = 23;
+	private final int REQUEST_CODE = 21;
 
-	TweetFragment tweet_fragment;
+	private ActionBar actionBar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,24 +63,16 @@ public class TimelineActivity extends FragmentActivity implements TabListener,
 	public void onCompose(MenuItem mi) {
 		Intent i = new Intent(this, ComposeActivity.class);
 		i.putExtra("action", "compose");
-		startActivityForResult(i, REQUEST_CODE_COMPOSE);
+		startActivityForResult(i, REQUEST_CODE);
 	}
 
-	public void onProfile(MenuItem miProfile) {
-		Intent i = new Intent(TimelineActivity.this, ProfileActivity.class);
-		i.putExtra("action", "profile");
-		startActivityForResult(i, REQUEST_CODE_PROFILE);
-	}
-
-	@Override
-	public void onProfileSeleted(String userId) {
-		Intent i = new Intent(TimelineActivity.this, ProfileActivity.class);
-		i.putExtra("user_id", userId);
-		startActivityForResult(i, REQUEST_CODE_PROFILE);
+	public void onProfile(MenuItem mi) {
+		Intent i = new Intent(this, ProfileActivity.class);
+		startActivity(i);
 	}
 
 	private void setupTabs() {
-		ActionBar actionBar = getActionBar();
+		actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		actionBar.setDisplayShowTitleEnabled(true);
 		Tab home_tab = actionBar.newTab().setText("Home")

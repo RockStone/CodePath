@@ -1,36 +1,26 @@
 package codepath.assignment.twitterclient.activities;
 
+import org.json.JSONObject;
+
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
+import android.widget.ImageView;
+import android.widget.TextView;
 import codepath.assignment.twitterclient.R;
-import codepath.assignment.twitterclient.fragments.ProfileFragment;
-import codepath.assignment.twitterclient.fragments.TweetFragment;
-import codepath.assignment.twitterclient.fragments.UserFragment;
+import codepath.assignment.twitterclient.clients.TwitterClientApp;
+import codepath.assignment.twitterclient.models.User;
 
-public class ProfileActivity extends FragmentActivity implements
-		TweetFragment.OnItemSelectedListener {
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+public class ProfileActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_profile);
-
-		String userId = getIntent().getStringExtra("userId");
-		if ("".equals(userId)) {
-			return;
-		}
-
-		FragmentTransaction fragment_transaction = getSupportFragmentManager()
-				.beginTransaction();
-		ProfileFragment userInfoFragment = ProfileFragment.newInstance(userId);
-		UserFragment userTimelineFragment = UserFragment.newInstance(userId);
-		fragment_transaction
-				.replace(R.id.flUserContainer, userInfoFragment);
-		fragment_transaction.replace(R.id.flTweetContainer,
-				userTimelineFragment);
-		fragment_transaction.commit();
+		loadProfile();
 	}
 
 	@Override
@@ -40,7 +30,28 @@ public class ProfileActivity extends FragmentActivity implements
 		return true;
 	}
 
-	@Override
-	public void onProfileSeleted(String userId) {
+	private void loadProfile() {
+		TwitterClientApp.getRestClient().getUser(new JsonHttpResponseHandler() {
+			@Override
+			public void onSuccess(JSONObject jsonUser) {
+				User user = User.fromJson(jsonUser);
+				getActionBar().setTitle("@" + user.getScreenName());
+				showProfile(user);
+			}
+
+			private void showProfile(User user) {
+				TextView tvUserName = (TextView) findViewById(R.id.tvUserName);
+				TextView tvFollower = (TextView) findViewById(R.id.tvFollower);
+				TextView tvFollowing = (TextView) findViewById(R.id.tvFollowing);
+				ImageView ivProfileImage = (ImageView) findViewById(R.id.ivProfileImage);
+
+				tvUserName.setText(user.getName());
+				tvFollower.setText(user.getFollowersCount() + " Followers");
+				tvFollowing.setText(user.getFriendsCount() + " Following");
+
+				ImageLoader.getInstance().displayImage(
+						user.getProfileImageUrl(), ivProfileImage);
+			}
+		});
 	}
 }

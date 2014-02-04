@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 
+
 @Table(name = "Tweet")
 public class Tweet {
 	@Column(name = "Body")
