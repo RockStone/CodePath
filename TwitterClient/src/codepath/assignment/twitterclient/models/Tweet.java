@@ -6,12 +6,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+
+@Table(name = "Tweet")
 public class Tweet {
+	@Column(name = "Body")
 	private String body;
+
+	@Column(name = "User")
+	private User user;
+	
 	private long uid;
 	private boolean favorited;
 	private boolean retweeted;
-	private User user;
 
 	public User getUser() {
 		return user;

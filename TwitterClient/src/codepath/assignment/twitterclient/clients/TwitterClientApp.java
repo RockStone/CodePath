@@ -1,8 +1,7 @@
-package codepath.assignment.twitterclient.singletons;
+package codepath.assignment.twitterclient.clients;
 
 import android.content.Context;
 
-import codepath.assignment.twitterclient.clients.TwitterClient;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;

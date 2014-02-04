@@ -7,6 +7,7 @@ import android.content.Context;
 
 import com.codepath.oauth.OAuthBaseClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 public class TwitterClient extends OAuthBaseClient {
@@ -23,20 +24,44 @@ public class TwitterClient extends OAuthBaseClient {
 
 	public void getHomeTimeline(AsyncHttpResponseHandler handler) {
 		String apiUrl = getApiUrl("statuses/home_timeline.json");
-        RequestParams params = new RequestParams();
-        params.put("count", "25");
-        client.get(apiUrl, params, handler);
+		RequestParams params = new RequestParams();
+		params.put("count", "25");
+		client.get(apiUrl, params, handler);
 	}
 
 	public void getUser(AsyncHttpResponseHandler handler) {
 		String apiUrl = getApiUrl("/account/verify_credentials.json");
 		client.get(apiUrl, null, handler);
 	}
-	
+
+	public void getUserShow(String userId,
+			JsonHttpResponseHandler jsonHttpResponseHandler) {
+		String apiUrl = getApiUrl("/users/show.json");
+		RequestParams params = new RequestParams();
+		params.put("user_id", userId);
+		client.get(apiUrl, params, jsonHttpResponseHandler);
+	}
+
 	public void postTweet(String body, AsyncHttpResponseHandler handler) {
 		String apiUrl = getApiUrl("statuses/update.json");
 		RequestParams params = new RequestParams();
 		params.put("status", body);
 		client.post(apiUrl, params, handler);
 	}
+
+	public void getMentionsTimeline(
+			JsonHttpResponseHandler jsonHttpResponseHandler) {
+		String apiUrl = getApiUrl("/statuses/mentions_timeline.json");
+		client.get(apiUrl, null, jsonHttpResponseHandler);
+	}
+
+	public void getUserTimeline(String userId,
+			JsonHttpResponseHandler jsonHttpResponseHandler) {
+		String apiUrl = getApiUrl("/statuses/user_timeline.json");
+		RequestParams params = new RequestParams();
+		params.put("user_id", userId);
+		params.put("count", "25");
+		client.get(apiUrl, params, jsonHttpResponseHandler);
+	}
+
 }

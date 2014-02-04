@@ -16,8 +16,8 @@ import codepath.assignment.twitterclient.models.Tweet;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
-public class TweetsAdapter extends ArrayAdapter<Tweet> {
-	public TweetsAdapter(Context context, ArrayList<Tweet> tweets) {
+public class TweetAdapter extends ArrayAdapter<Tweet> {
+	public TweetAdapter(Context context, ArrayList<Tweet> tweets) {
 		super(context, 0, tweets);
 	}
 
