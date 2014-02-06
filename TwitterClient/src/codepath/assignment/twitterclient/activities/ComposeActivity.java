@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import codepath.assignment.twitterclient.R;
-import codepath.assignment.twitterclient.clients.TwitterClientApp;
+import codepath.assignment.twitterclient.singletons.TwitterClientApp;
 
 public class ComposeActivity extends Activity {
 	private EditText etTweet;
