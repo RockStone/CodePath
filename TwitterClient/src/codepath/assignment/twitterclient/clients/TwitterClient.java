@@ -7,6 +7,7 @@ import android.content.Context;
 
 import com.codepath.oauth.OAuthBaseClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 public class TwitterClient extends OAuthBaseClient {
@@ -28,9 +29,11 @@ public class TwitterClient extends OAuthBaseClient {
         client.get(apiUrl, params, handler);
 	}
 
-	public void getUser(AsyncHttpResponseHandler handler) {
-		String apiUrl = getApiUrl("/account/verify_credentials.json");
-		client.get(apiUrl, null, handler);
+	public void getUserTimeLine(JsonHttpResponseHandler jsonHttpResponseHandler) {
+		String apiUrl = getApiUrl("/statuses/user_timeline.json");
+		RequestParams params = new RequestParams();
+        params.put("count", "25");
+		client.get(apiUrl, params, jsonHttpResponseHandler);
 	}
 	
 	public void postTweet(String body, AsyncHttpResponseHandler handler) {
@@ -38,5 +41,15 @@ public class TwitterClient extends OAuthBaseClient {
 		RequestParams params = new RequestParams();
 		params.put("status", body);
 		client.post(apiUrl, params, handler);
+	}
+	
+	public void getMentions(AsyncHttpResponseHandler handler) {
+		String url = getApiUrl("statuses/mentions_timeline.json");
+		client.get(url, null, handler);
+	}
+	
+	public void getUserInfo(AsyncHttpResponseHandler handler) {
+		String url = getApiUrl("account/verify_credentials.json");
+		client.get(url, null, handler);
 	}
 }

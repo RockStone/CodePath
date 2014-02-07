@@ -1,16 +1,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <item
+    <!--item
         android:id="@+id/miRefresh"
         android:icon="@drawable/ic_refresh"
         android:onClick="onRefresh"
         android:showAsAction="ifRoom"
-        android:title="@string/refresh"/>
+        android:title="@string/refresh"/-->
     <item
         android:id="@+id/miCompose"
         android:icon="@drawable/ic_compose"
         android:onClick="onCompose"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="@string/compose"/>
-
+    <item
+        android:id="@+id/miProfile"
+        android:icon="@drawable/ic_profile"
+        android:onClick="onProfileView"
+        android:showAsAction="always"
+        android:title="@string/profile"/>
+    
 </menu>

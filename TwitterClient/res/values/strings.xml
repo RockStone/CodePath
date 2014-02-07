@@ -15,5 +15,9 @@
     <string name="null_characters">0</string>
     <string name="say_something">Say something, Dude!</string>
     <string name="gossip_leak">Gossip Leak!</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="profile">Profile</string>
+    <string name="name">Name</string>
+    <string name="tagline">Tagline</string>
 
 </resources>
