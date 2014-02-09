@@ -17,7 +17,8 @@ public class ProfileActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_profile);
 		this.user = (User) getIntent().getSerializableExtra("user");
-		loadUserProfile();
+		String userId = Long.toString(user.getId());
+		loadUserProfile(userId);
 	}
 
 	@Override
@@ -27,12 +28,12 @@ public class ProfileActivity extends FragmentActivity {
 		return true;
 	}
 
-	public void loadUserProfile() {
+	public void loadUserProfile(String userId) {
 		getActionBar().setTitle("@" + user.getScreenName());
 		FragmentTransaction fts = getSupportFragmentManager()
 				.beginTransaction();
 		ProfileHeaderFragment profileHeaderFragment = new ProfileHeaderFragment();
-		UserTimelineFragment userTimelineFragment = new UserTimelineFragment();
+		UserTimelineFragment userTimelineFragment = UserTimelineFragment.newInstance(userId);
 		profileHeaderFragment.setUser(user);
 		fts.replace(R.id.frame_profile_header_container, profileHeaderFragment);
 		fts.replace(R.id.frame_user_timeline_container, userTimelineFragment);

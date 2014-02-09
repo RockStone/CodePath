@@ -11,15 +11,21 @@ import codepath.assignment.twitterclient.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class UserTimelineFragment extends TweetsListFragment {
+	public static UserTimelineFragment newInstance(String userId) {
+		UserTimelineFragment userTimelineFragment = new UserTimelineFragment();
+        Bundle args = new Bundle();
+        args.putString("userId", userId);
+        userTimelineFragment.setArguments(args);
+        return userTimelineFragment;
+    }
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setupViews();
-	}
-
-	protected void setupViews() {
-		TwitterClientApp.getRestClient().getUserTimeLine(
+		
+		String userId = getArguments().getString("userId", ""); 
+		
+		TwitterClientApp.getRestClient().getUserTimeLine(userId, 
 				new JsonHttpResponseHandler() {
 					@Override
 					public void onSuccess(JSONArray jsonTweets) {
